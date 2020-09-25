@@ -3,7 +3,7 @@
   <div class="login">
 
     <div class="hd">
-        <h2>EasyCloud</h2>
+        <h2>UniversalCloud</h2>
     </div>
 
     <div class="bd">

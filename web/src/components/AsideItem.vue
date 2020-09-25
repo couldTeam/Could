@@ -1,7 +1,6 @@
 <template>
 
   <div class="asideView">
-    
     <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
         <el-menu :default-active="activeIndex" :router="true">
 
