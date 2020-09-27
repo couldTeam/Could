@@ -9,7 +9,12 @@
       <el-container direction="horizontal">
         <aside-item activeIndex="3"></aside-item>
       </el-container>
-      <el-tooltip class="item" effect="dark" :content="showContent" placement="right-start">
+      <el-tooltip
+        class="item"
+        effect="dark"
+        :content="showContent"
+        placement="right-start"
+      >
         <el-progress
           class="show-circle"
           type="circle"
@@ -34,8 +39,8 @@ export default {
   },
   data() {
     return {
-      showContent: '',
-      sum: '',
+      showContent: "",
+      sum: "",
       percent: 0,
     };
   },
@@ -46,7 +51,7 @@ export default {
     //获取文件列表
     requestListApi(pageNum, pageSize) {
       var truePageNum = 1;
-      var truePageSize = 10;
+      var truePageSize = 9999;
       var thiz = this;
       this.$http
         .get("/api/usr/file/list", {
@@ -68,61 +73,60 @@ export default {
           }
         });
     },
-    calSum(){
+    calSum() {
       var sum = 0;
       var data = new Array();
-      this.tableData.forEach(item=>{
+      this.tableData.forEach((item) => {
         //sum+= this.translate("1GB")
         sum += this.translate(item.size);
-        this.sum = this.conver(sum); 
-        this.showContent = this.sum+"/1GB"
+        this.sum = this.conver(sum);
+        this.showContent = this.sum + "/1GB";
       });
-      this.percent = ((sum / (1024*1024*1024)) *100).toFixed(4);
+      this.percent = ((sum / (1024 * 1024 * 1024)) * 100).toFixed(4);
     },
 
-    translate(size){
-      var tmp = size.slice(0,size.length-2);
+    translate(size) {
+      var tmp = size.slice(0, size.length - 2);
       console.log(tmp);
-      if(size.charAt(size.length-2)==='K') {
-          tmp *= 1024;
-        }
-      else if (size.charAt(size.length-2)==='M'){
-          tmp *= 1024;
-          tmp *= 1024;
-      }
-      else if (size.charAt(size.length-2)==='G'){
-          tmp *= 1024;
-          tmp *= 1024;
-          tmp *= 1024;
-      }
-      else tmp *= 10;
-        return tmp;
+      if (size.charAt(size.length - 2) === "K") {
+        tmp *= 1024;
+      } else if (size.charAt(size.length - 2) === "M") {
+        tmp *= 1024;
+        tmp *= 1024;
+      } else if (size.charAt(size.length - 2) === "G") {
+        tmp *= 1024;
+        tmp *= 1024;
+        tmp *= 1024;
+      } else tmp *= 10;
+      return tmp;
     },
 
-    conver(limit){  
-            var size = "";  
-            if( limit < 0.1 * 1024 ){ //如果小于0.1KB转化成B  
-                size = limit.toFixed(2) + "B";    
-            }else if(limit < 0.1 * 1024 * 1024 ){//如果小于0.1MB转化成KB  
-                size = (limit / 1024).toFixed(2) + "KB";              
-            }else if(limit < 0.1 * 1024 * 1024 * 1024){ //如果小于0.1GB转化成MB  
-                size = (limit / (1024 * 1024)).toFixed(2) + "MB";  
-            }else{ //其他转化成GB  
-                size = (limit / (1024 * 1024 * 1024)).toFixed(2) + "GB";  
-            }  
-              
-            var sizestr = size + "";   
-            var len = sizestr.indexOf("\.");  
-            var dec = sizestr.substr(len + 1, 2);  
-            if(dec == "00"){//当小数点后为00时 去掉小数部分  
-                return sizestr.substring(0,len) + sizestr.substr(len + 3,2);  
-            }  
-            return sizestr;  
-        }  
+    conver(limit) {
+      var size = "";
+      if (limit < 0.1 * 1024) {
+        //如果小于0.1KB转化成B
+        size = limit.toFixed(2) + "B";
+      } else if (limit < 0.1 * 1024 * 1024) {
+        //如果小于0.1MB转化成KB
+        size = (limit / 1024).toFixed(2) + "KB";
+      } else if (limit < 0.1 * 1024 * 1024 * 1024) {
+        //如果小于0.1GB转化成MB
+        size = (limit / (1024 * 1024)).toFixed(2) + "MB";
+      } else {
+        //其他转化成GB
+        size = (limit / (1024 * 1024 * 1024)).toFixed(2) + "GB";
+      }
 
-
-    
-  }
+      var sizestr = size + "";
+      var len = sizestr.indexOf(".");
+      var dec = sizestr.substr(len + 1, 2);
+      if (dec == "00") {
+        //当小数点后为00时 去掉小数部分
+        return sizestr.substring(0, len) + sizestr.substr(len + 3, 2);
+      }
+      return sizestr;
+    },
+  },
 };
 </script>
 

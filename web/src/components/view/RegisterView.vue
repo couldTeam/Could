@@ -116,8 +116,7 @@ export default {
 
         this.regLoading = true;
         var thiz = this;
-        this.$http.post("/api/pub/register", mydata)
-        .then(function (response) {
+        this.$http.post("/api/pub/register", mydata).then(function (response) {
           //this.regLoading = false;
           if (response.data.code === 200) {
             var onComplete = function () {
@@ -137,7 +136,7 @@ export default {
             thiz.showErrorMsg(response.data.msg);
             thiz.regLoading = false;
           }
-        })
+        });
       });
     },
   },
