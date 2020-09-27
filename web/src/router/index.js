@@ -9,6 +9,7 @@ const RegisterView = () => import('@/components/view/RegisterView.vue')
 const NotFound = () => import('@/components/view/NotFound.vue')
 const MyFileView = () => import('@/components/view/MyFileView.vue')
 const PubShareView = () => import('@/components/view/PubShareView.vue')
+const ShowView = () => import('@/components/view/Show.vue')
 
 Vue.use(Router)
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/myshare',
       name: 'route-my-share',
      component: MyShareView
+    },
+    {
+      path: '/show',
+      name: 'show-space',
+      component: ShowView
     },
     {
       path: '/login',

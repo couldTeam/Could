@@ -3,7 +3,7 @@
   <div class="login">
 
     <div class="hd">
-        <h2>UniversalCloud</h2>
+      <img class="topic_icon" src="../../../../preview/titleIcon.png" />
     </div>
 
     <div class="bd">

@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://localhost:1088/api',
+        target: 'http://10.251.253.74:80/easycloud/api',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

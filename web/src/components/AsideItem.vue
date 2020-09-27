@@ -6,6 +6,7 @@
 
           <el-menu-item index="1" :route="{name: 'route-index'}">我的文件</el-menu-item>
           <el-menu-item index="2" :route="{name: 'route-my-share'}">我的分享</el-menu-item>
+          <el-menu-item index="3" :route="{name: 'show-space'}">当前存储</el-menu-item>
 
         </el-menu>
       </el-aside>
@@ -22,7 +23,7 @@ export default {
   props:['activeIndex'],
   data(){
       return {
-          
+          tableData: []
       }
   }
 }
