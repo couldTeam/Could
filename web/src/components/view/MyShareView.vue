@@ -117,13 +117,14 @@ export default {
     },
     showShortLink(index, row) {
       console.log(row)
-      this.$confirm("" + row.shortlink, row.fileInfo.name, {
+      let link = "http://10.251.253.74:8081/share"+row.shortlink.substring(27);
+      this.$confirm("" + link, row.fileInfo.name, {
         confirmButtonText: "复制",
         cancelButtonText: "取消",
         type: "info",
       })
         .then(() => {
-          this.copyToClipboard("" + row.shortlink);
+          this.copyToClipboard("" +link);
         })
         .catch(() => {});
     },
